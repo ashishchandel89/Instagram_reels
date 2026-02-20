@@ -163,10 +163,11 @@ main section .outerreel .reel .right .love {
     width: 50px;
   }
   main section .outerreel .reel .right i {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   main section .outerreel .reel .right h5 {
-    font-size: 0.55rem;
+    font-size: 0.8rem;
+    text-align: center;
   }
 }
 /* Mobile devices */
@@ -226,7 +227,7 @@ main section .outerreel .reel .right .love {
     font-size: 0.8rem;
   }
   main section .outerreel .reel .right i {
-    font-size: 1.7rem;
+    font-size: 2rem;
   }
   main section .outerreel .reel .right h5 {
     font-size: 0.8rem;
