@@ -119,9 +119,10 @@ const reels = [
         userprofile: "https://images.unsplash.com/photo-1494790108377-be9c29b29330"
     }
 ];
-
+let allReels=document.querySelector('.outerreel');
 let sum=0;
 reels.forEach(function(elem){
+   
     sum=sum+`<div class="reel">
                     <div class="top">
                     <video src="${elem.video}" autoplay loop muted></video>
@@ -137,16 +138,17 @@ reels.forEach(function(elem){
                         <h5>${elem.caption}</h5>
                     </div>
                     <div class="right">
-                        <i class="ri-heart-3-line"></i>
-                        <h5>109k</h5>
+                    <div class="like">${elem.isLiked ? '<i class="love ri-heart-3-fill"></i>' : '<i class="ri-heart-3-line"></i>'}
+                        
+                        <h5>${elem.likeCount}</h5></div>
+                        <div class="comment">
                         <i class="ri-chat-3-line"></i>
-                        <h5>10.90k</h5>
+                        <h5>${elem.commentCount}</h5></div>
+                        <div class="share">
                         <i class="ri-send-ins-line"></i>
-                        <h5>80.8k</h5>
+                        <h5>${elem.shareCount}</h5></div>
                         <i class="ri-more-2-fill"></i>
                     </div>
                 </div>`
 })
-
-let allReels=document.querySelector('.outerreel');
 allReels.innerHTML=sum;

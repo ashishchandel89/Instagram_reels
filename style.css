@@ -126,6 +126,10 @@ main section .outerreel .reel .right h5 {
   color: white;
   margin-bottom: 1rem;
   font-weight: 400;
+  text-align: center;
+}
+main section .outerreel .reel .right .love {
+  color: red;
 }
 
 /* Large tablets */
@@ -206,10 +210,11 @@ main section .outerreel .reel .right h5 {
     padding-bottom: 6rem;
   }
   main section .outerreel .reel .right i {
-    font-size: 1.4rem;
+    font-size: 2rem;
   }
   main section .outerreel .reel .right h5 {
-    font-size: 0.5rem;
+    font-size: 0.8rem;
+    text-align: center;
   }
 }
 /* Very small phones */
