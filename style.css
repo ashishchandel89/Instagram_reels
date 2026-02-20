@@ -226,6 +226,10 @@ main section .outerreel .reel .right .love {
     font-size: 0.8rem;
   }
   main section .outerreel .reel .right i {
-    font-size: 1.3rem;
+    font-size: 1.7rem;
+  }
+  main section .outerreel .reel .right h5 {
+    font-size: 0.8rem;
+    text-align: center;
   }
 }/*# sourceMappingURL=style.css.map */
