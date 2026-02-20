@@ -127,6 +127,7 @@ main section .outerreel .reel .right h5 {
   margin-bottom: 1rem;
   font-weight: 400;
   text-align: center;
+  font-variant-numeric: tabular-nums;
 }
 main section .outerreel .reel .right .love {
   color: red;

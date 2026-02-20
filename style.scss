@@ -125,7 +125,7 @@ main{
                     margin-bottom: 1rem;
                     font-weight: 400;
                     text-align: center;
-                    
+                     font-variant-numeric: tabular-nums;
                    }
                    .love{
                     color: red;
@@ -189,6 +189,7 @@ main{
             h5 {
               font-size: 0.8rem;
               text-align: center;
+              
             }
           }
         }
