@@ -90,7 +90,7 @@ main section .outerreel .reel .bottom .user h3 {
   color: white;
   font-weight: 600;
 }
-main section .outerreel .reel .bottom .user button {
+main section .outerreel .reel .bottom .user .follow button {
   padding: 0.4rem 1rem;
   background-color: transparent;
   border: 0.09rem solid white;
@@ -156,7 +156,7 @@ main section .outerreel .reel .right .love {
   main section .outerreel .reel .bottom .user h3 {
     font-size: 0.9rem;
   }
-  main section .outerreel .reel .bottom .user button {
+  main section .outerreel .reel .bottom .user .follow button {
     font-size: 0.75rem;
     padding: 0.3rem 0.8rem;
   }
@@ -203,7 +203,7 @@ main section .outerreel .reel .right .love {
   main section .outerreel .reel .bottom .user h3 {
     font-size: 0.85rem;
   }
-  main section .outerreel .reel .bottom .user button {
+  main section .outerreel .reel .bottom .user .follow button {
     padding: 0.25rem 0.7rem;
     font-size: 0.7rem;
   }

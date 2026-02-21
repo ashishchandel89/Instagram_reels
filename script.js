@@ -1,7 +1,7 @@
 const reels = [
     {
         username: "codewithayush",
-        likeCount: 14820,
+        likeCount: 14898,
         isLiked: false,
         commentCount: 423,
         shareCount: 92,
@@ -12,7 +12,7 @@ const reels = [
     },
     {
         username: "designbysan",
-        likeCount: 9820,
+        likeCount: 1920,
         isLiked: true,
         commentCount: 184,
         shareCount: 41,
@@ -54,7 +54,7 @@ const reels = [
         shareCount: 55,
         isFollowed: true,
         caption: "Code. Sleep. Repeat. That’s the cycle.",
-        video: "video5.mp4.mp4",
+        video: "video1.mp4.mp4",
 
         userprofile: "https://images.unsplash.com/photo-1599566150163-29194dcaad36"
     },
@@ -120,35 +120,62 @@ const reels = [
     }
 ];
 let allReels=document.querySelector('.outerreel');
-let sum=0;
-reels.forEach(function(elem){
-   
-    sum=sum+`<div class="reel">
-                    <div class="top">
-                    <video src="${elem.video}" autoplay loop muted></video>
-                    </div>
-                    <div class="bottom">
-                        <div class="user">
-                            <div class="img2">
-                        <img src="${elem.userprofile}"  alt="image not found">
-                        </div>
-                        <h3>${elem.username}</h3>
-                        <button>Follow</button>
-                        </div>
-                        <h5>${elem.caption}</h5>
-                    </div>
-                    <div class="right">
-                    <div class="like">${elem.isLiked ? '<i class="love ri-heart-3-fill"></i>' : '<i class="ri-heart-3-line"></i>'}
-                        
-                        <h5>${elem.likeCount}</h5></div>
-                        <div class="comment">
-                        <i class="ri-chat-3-line"></i>
-                        <h5>${elem.commentCount}</h5></div>
-                        <div class="share">
-                        <i class="ri-send-ins-line"></i>
-                        <h5>${elem.shareCount}</h5></div>
-                        <i class="ri-more-2-fill"></i>
-                    </div>
-                </div>`
+
+function allData(){
+let sum="";
+reels.forEach(function(elem,idx){
+   sum += `
+<div class="reel">
+    <div class="top">
+        <video src="${elem.video}" autoplay loop muted></video>
+    </div>
+
+    <div class="bottom">
+        <div class="user">
+            <div class="img2">
+                <img src="${elem.userprofile}" alt="image not found">
+            </div>
+            <h3>${elem.username}</h3>
+
+            <div data-id="${idx}" class="follow">
+                <button>${elem.isFollowed ? 'Unfollow' : 'Follow'}</button>
+            </div>
+        </div>
+
+        <h5>${elem.caption}</h5>
+    </div>
+
+    <div class="right">
+
+        <div class="like">
+            ${
+              elem.isLiked
+              ? `<i data-id="${idx}" class="love ri-heart-3-fill"></i>`
+              : `<i data-id="${idx}" class="ri-heart-3-line"></i>`
+            }
+        </div>
+        <h5>${elem.likeCount}</h5>
+
+        <div class="comment">
+            <i data-id="${idx}" class="ri-chat-3-line"></i>
+            <h5>${elem.commentCount}</h5>
+        </div>
+
+        <div class="share">
+            <i data-id="${idx}" class="ri-send-ins-line"></i>
+            <h5>${elem.shareCount}</h5>
+        </div>
+
+        <i class="ri-more-2-fill"></i>
+
+    </div>
+</div>
+`;
 })
 allReels.innerHTML=sum;
+}
+allData();
+allReels.addEventListener('click',function(dets){
+        console.log(dets);
+    
+})
