@@ -9,7 +9,7 @@ const reels = [
         caption: "Dark mode > light mode. Change my mind.",
         video: "videos3.mp4",
         userprofile: "https://images.unsplash.com/photo-1613915617430-8ab0fd7c6baf?q=80&w=930&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        ismuted: true,
+        ismuted: false,
     },
     {
         username: "designbysan",
@@ -19,9 +19,9 @@ const reels = [
         shareCount: 41,
         isFollowed: false,
         caption: "UI tip: Padding is personality. Give your elements some space.",
-        video: "video2.mp4.mp4",
+        video: "videos4.mp4",
         userprofile: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79",
-        ismuted: true,
+        ismuted: false,
     },
     {
         username: "frontend.ninja",
@@ -32,7 +32,7 @@ const reels = [
         isFollowed: true,
         caption: "When flexbox finally aligns the way you wanted 😭🔥",
         video: "video3.mp4.mp4",
-        ismuted: true,
+       ismuted: false,
         userprofile: "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126"
     },
     {
@@ -44,7 +44,7 @@ const reels = [
         isFollowed: false,
         caption: "My solo Bali trip changed everything 🌴",
         video: "video4.mp4.mp4",
-        ismuted: true,
+       ismuted: false,
         userprofile: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
     },
     {
@@ -56,7 +56,7 @@ const reels = [
         isFollowed: true,
         caption: "Code. Sleep. Repeat. That’s the cycle.",
         video: "video1.mp4.mp4",
-        ismuted: true,
+        ismuted: false,
         userprofile: "https://images.unsplash.com/photo-1599566150163-29194dcaad36"
     },
     {
@@ -68,7 +68,7 @@ const reels = [
         isFollowed: true,
         caption: "No gym? No problem. Do this 12-min workout at home.",
         video: "video6.mp4.mp4",
-        ismuted: true,
+       ismuted: false,
         userprofile: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6"
     },
     {
@@ -80,7 +80,7 @@ const reels = [
         isFollowed: false,
         caption: "You won’t believe this burger exists 🤯🍔",
         video: "video7.mp4.mp4",
-        ismuted: true,
+       ismuted: false,
         userprofile: "https://images.unsplash.com/photo-1552058544-f2b08422138a"
     },
     {
@@ -92,7 +92,7 @@ const reels = [
         isFollowed: true,
         caption: "Late night vibes // piano version 🎹✨",
         video: "video8.mp4.mp4",
-        ismuted: true,
+        ismuted: false,
         userprofile: "https://images.unsplash.com/photo-1502685104226-ee32379fefbe"
     },
     {
@@ -104,7 +104,7 @@ const reels = [
         isFollowed: false,
         caption: "The most underrated smartphone of 2024 📱",
         video: "video9.mp4.mp4",
-        ismuted: true,
+       ismuted: false,
         userprofile: "https://images.unsplash.com/photo-1511367461989-f85a21fda167"
     },
     {
@@ -116,7 +116,7 @@ const reels = [
         isFollowed: true,
         caption: "GSAP can literally change your career. Start today.",
         video: "video10.mp4.mp4",
-        ismuted: true,
+        ismuted: false,
         userprofile: "https://images.unsplash.com/photo-1494790108377-be9c29b29330"
     }
 ];
@@ -129,7 +129,8 @@ reels.forEach(function(elem,idx){
    sum += `
 <div class="reel">
     <div class="top">
-        <video src="${elem.video}" autoplay loop ></video>
+        <video autoplay loop ${elem.ismuted ? 'muted' : ''} src="${elem.video}" ></video>
+         <div id="${idx}" class="mute">${elem.ismuted ? '<i class="ri-volume-mute-fill"></i>' : '<i class="ri-volume-up-fill"></i>'}</div>
     </div>
 
     <div class="bottom">
@@ -144,22 +145,24 @@ reels.forEach(function(elem,idx){
         <h5>${elem.caption}</h5>
     </div>
 
+                   
      <div class="right">
-                        <div id="${idx}" class="like">
-                        ${elem.isLiked ? '<i class="love ri-heart-3-fill"></i>' : '<i class="ri-heart-3-line"></i>'}
-                        <h5>${elem.likeCount}</h5>
-                        </div>
-                        <div class="comment">
-                        <i data-id="" class="ri-chat-3-line"></i>
-                        <h5>${elem.commentCount}</h5>
-                       </div>
-                        <div class="share">
-                         <i data-id="" class=" ri-send-ins-line"></i>
-                        <h5>${elem.shareCount}</h5>
-                        </div>
-                        
-                        <i class="ri-more-2-fill"></i>
-                    </div>
+            <div id=${idx} class="like">
+              <h4 class="like-icon icon">${elem.isLiked ? '<i class="love ri-heart-3-fill"></i>' : '<i class="ri-heart-3-line"></i>'}</h4>
+              <h5>${elem.likeCount}</h5>
+            </div>
+            <div class="comment">
+              <h4 class="comment-icon icon"><i class="ri-chat-3-line"></i></h4>
+              <h5>${elem.commentCount}</h5>
+            </div>
+            <div class="share">
+              <h4 class="share-icon icon"><i class="ri-share-forward-line"></i></h4>
+              <h5>${elem.shareCount}</h5>
+            </div>
+            <div class="menu">
+              <h4 class="menu-icon icon"><i class="ri-more-2-fill"></i></h4>
+            </div>
+          </div>
 </div>
 `;
 
@@ -191,6 +194,12 @@ allReels.addEventListener('click',function(dets){
         allData();
     }
 
-    
-
+    if(dets.target.className == "mute") 
+    if(!reels[dets.target.id].ismuted){
+            reels[dets.target.id].ismuted=true;
+        }
+        else{
+            reels[dets.target.id].ismuted=false;
+        }
+        allData();
     });
