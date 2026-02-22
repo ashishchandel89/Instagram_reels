@@ -7,8 +7,9 @@ const reels = [
         shareCount: 92,
         isFollowed: false,
         caption: "Dark mode > light mode. Change my mind.",
-        video: "video1.mp4.mp4",
-        userprofile: "https://images.unsplash.com/photo-1613915617430-8ab0fd7c6baf?q=80&w=930&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        video: "videos3.mp4",
+        userprofile: "https://images.unsplash.com/photo-1613915617430-8ab0fd7c6baf?q=80&w=930&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        ismuted: true,
     },
     {
         username: "designbysan",
@@ -19,8 +20,8 @@ const reels = [
         isFollowed: false,
         caption: "UI tip: Padding is personality. Give your elements some space.",
         video: "video2.mp4.mp4",
-
-        userprofile: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79"
+        userprofile: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79",
+        ismuted: true,
     },
     {
         username: "frontend.ninja",
@@ -31,7 +32,7 @@ const reels = [
         isFollowed: true,
         caption: "When flexbox finally aligns the way you wanted 😭🔥",
         video: "video3.mp4.mp4",
-
+        ismuted: true,
         userprofile: "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126"
     },
     {
@@ -43,7 +44,7 @@ const reels = [
         isFollowed: false,
         caption: "My solo Bali trip changed everything 🌴",
         video: "video4.mp4.mp4",
-
+        ismuted: true,
         userprofile: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e"
     },
     {
@@ -55,7 +56,7 @@ const reels = [
         isFollowed: true,
         caption: "Code. Sleep. Repeat. That’s the cycle.",
         video: "video1.mp4.mp4",
-
+        ismuted: true,
         userprofile: "https://images.unsplash.com/photo-1599566150163-29194dcaad36"
     },
     {
@@ -67,7 +68,7 @@ const reels = [
         isFollowed: true,
         caption: "No gym? No problem. Do this 12-min workout at home.",
         video: "video6.mp4.mp4",
-
+        ismuted: true,
         userprofile: "https://images.unsplash.com/photo-1595152772835-219674b2a8a6"
     },
     {
@@ -79,7 +80,7 @@ const reels = [
         isFollowed: false,
         caption: "You won’t believe this burger exists 🤯🍔",
         video: "video7.mp4.mp4",
-
+        ismuted: true,
         userprofile: "https://images.unsplash.com/photo-1552058544-f2b08422138a"
     },
     {
@@ -91,7 +92,7 @@ const reels = [
         isFollowed: true,
         caption: "Late night vibes // piano version 🎹✨",
         video: "video8.mp4.mp4",
-
+        ismuted: true,
         userprofile: "https://images.unsplash.com/photo-1502685104226-ee32379fefbe"
     },
     {
@@ -103,7 +104,7 @@ const reels = [
         isFollowed: false,
         caption: "The most underrated smartphone of 2024 📱",
         video: "video9.mp4.mp4",
-
+        ismuted: true,
         userprofile: "https://images.unsplash.com/photo-1511367461989-f85a21fda167"
     },
     {
@@ -115,7 +116,7 @@ const reels = [
         isFollowed: true,
         caption: "GSAP can literally change your career. Start today.",
         video: "video10.mp4.mp4",
-
+        ismuted: true,
         userprofile: "https://images.unsplash.com/photo-1494790108377-be9c29b29330"
     }
 ];
@@ -124,10 +125,11 @@ let allReels=document.querySelector('.outerreel');
 function allData(){
 let sum="";
 reels.forEach(function(elem,idx){
+ 
    sum += `
 <div class="reel">
     <div class="top">
-        <video src="${elem.video}" autoplay loop muted></video>
+        <video src="${elem.video}" autoplay loop ></video>
     </div>
 
     <div class="bottom">
@@ -136,46 +138,59 @@ reels.forEach(function(elem,idx){
                 <img src="${elem.userprofile}" alt="image not found">
             </div>
             <h3>${elem.username}</h3>
-
-            <div data-id="${idx}" class="follow">
-                <button>${elem.isFollowed ? 'Unfollow' : 'Follow'}</button>
-            </div>
+                <button id=${idx} class='follow'>${elem.isFollowed ? 'Unfollow' : 'Follow'}</button>
         </div>
 
         <h5>${elem.caption}</h5>
     </div>
 
-    <div class="right">
-
-        <div class="like">
-            ${
-              elem.isLiked
-              ? `<i data-id="${idx}" class="love ri-heart-3-fill"></i>`
-              : `<i data-id="${idx}" class="ri-heart-3-line"></i>`
-            }
-        </div>
-        <h5>${elem.likeCount}</h5>
-
-        <div class="comment">
-            <i data-id="${idx}" class="ri-chat-3-line"></i>
-            <h5>${elem.commentCount}</h5>
-        </div>
-
-        <div class="share">
-            <i data-id="${idx}" class="ri-send-ins-line"></i>
-            <h5>${elem.shareCount}</h5>
-        </div>
-
-        <i class="ri-more-2-fill"></i>
-
-    </div>
+     <div class="right">
+                        <div id="${idx}" class="like">
+                        ${elem.isLiked ? '<i class="love ri-heart-3-fill"></i>' : '<i class="ri-heart-3-line"></i>'}
+                        <h5>${elem.likeCount}</h5>
+                        </div>
+                        <div class="comment">
+                        <i data-id="" class="ri-chat-3-line"></i>
+                        <h5>${elem.commentCount}</h5>
+                       </div>
+                        <div class="share">
+                         <i data-id="" class=" ri-send-ins-line"></i>
+                        <h5>${elem.shareCount}</h5>
+                        </div>
+                        
+                        <i class="ri-more-2-fill"></i>
+                    </div>
 </div>
 `;
+
 })
 allReels.innerHTML=sum;
 }
 allData();
+
 allReels.addEventListener('click',function(dets){
-        console.log(dets);
+    if (dets.target.className == 'like') {
+        if(!reels[dets.target.id].isLiked){
+            reels[dets.target.id].likeCount++;
+            reels[dets.target.id].isLiked=true;
+        }
+        else{
+            reels[dets.target.id].likeCount--;
+            reels[dets.target.id].isLiked=false;
+        }
+        allData();
+    }
+
+    if(dets.target.className == 'follow'){
+        if(!reels[dets.target.id].isFollowed){
+            reels[dets.target.id].isFollowed=true;
+        }
+        else{
+            reels[dets.target.id].isFollowed=false;
+        }
+        allData();
+    }
+
     
-})
+
+    });
